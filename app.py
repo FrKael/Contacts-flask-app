@@ -28,10 +28,6 @@ def add_contact():
         phone = request.form['phone']
         email = request.form['email']
         
-        if not all([fullname, phone, email]):
-            flash('Please fill out all fields')
-            return redirect(request.url)
-        
         cur = mysql.connection.cursor()
         cur.execute('INSERT INTO contacts (fullname, phone, email) VALUES (%s, %s, %s)',
         (fullname, phone, email))
